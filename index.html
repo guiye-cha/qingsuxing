@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>焦虑自助练习 · 五板块</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root{
+  --theme:#4F9D8D;--dark:#3C7E70;--light:#E8F3F0;
+  --blue:#5C8AE0;--blueL:#EAF1FD;--purple:#7B6CC4;--purpleL:#EFEAFC;
+  --amber:#D9A441;--amberL:#FDF3E0;--coral:#D96A4A;--coralL:#FAEAE3;--teal:#3F9AA8;--tealL:#E6F4F6;
+  --bg:#F4F6F5;--t1:#1F2A26;--t2:#5E6B66;--t3:#98A5A0;--line:#EDECE8;--r:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;background:#2A3330;
+  color:var(--t1);line-height:1.5;-webkit-font-smoothing:antialiased;display:flex;align-items:center;
+  justify-content:center;min-height:100vh;padding:20px 0;word-break:break-word;overflow-wrap:anywhere}
+.material-icons{font-size:20px;vertical-align:middle}
+.phone{width:375px;height:812px;background:var(--bg);border-radius:38px;overflow:hidden;position:relative;
+  display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.5);border:8px solid #121917}
+.sb{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:12px;
+  font-weight:600;flex:none}
+.nb{height:44px;display:flex;align-items:center;justify-content:center;flex:none;font-size:16px;font-weight:600;position:relative}
+.nb .back{position:absolute;left:14px;top:11px;width:28px;height:28px;border-radius:50%;display:flex;
+  align-items:center;justify-content:center;cursor:pointer;color:var(--t2)}
+.scr{flex:1;display:none;flex-direction:column;min-height:0}
+.scr.on{display:flex}
+.sc{flex:1;overflow-y:auto;overflow-x:hidden;padding:0 16px 14px}
+.sc::-webkit-scrollbar{width:0}
+.disc{flex:none;background:#FFF6EC;border-top:1px solid #F5E3CB;color:#9A6B2F;font-size:11px;padding:7px 14px;
+  display:flex;gap:6px;align-items:center;line-height:1.35}
+.disc .material-icons{font-size:15px;color:var(--amber);flex:none}
+.tabs{flex:none;height:56px;background:#fff;border-top:1px solid var(--line);display:flex}
+.tb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;
+  color:var(--t3);font-size:11px}
+.tb .material-icons{font-size:23px}
+.tb.on{color:var(--dark);font-weight:600}
+.card{background:#fff;border-radius:var(--r);padding:15px 16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(31,42,38,.06)}
+.row{display:flex;align-items:center;gap:12px}.bet{justify-content:space-between}
+.tiny{color:var(--t3);font-size:11px}.mut{color:var(--t2);font-size:13px;line-height:1.65}
+.btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:12px;background:var(--theme);
+  color:#fff;border:none;border-radius:var(--r);font-size:14.5px;font-weight:600;cursor:pointer}
+.btn:active{background:var(--dark);transform:scale(.99)}
+.btn.g{background:var(--light);color:var(--dark)}.btn.l{background:#fff;color:var(--t2);border:1px solid var(--line);font-weight:500}
+.btn.sm{width:auto;padding:7px 13px;font-size:12.5px;border-radius:18px}
+.btn.w{background:var(--coral)}.btn.p{background:var(--purple)}
+.btn:disabled{opacity:.4}
+.chip{display:inline-flex;align-items:center;gap:3px;padding:3px 9px;border-radius:18px;font-size:11px;font-weight:600;
+  background:var(--light);color:var(--dark)}
+.chip.g{background:#F0F1F0;color:var(--t2)}.chip.a{background:var(--amberL);color:#9A6B2F}
+.chip.c{background:var(--coralL);color:#B4553A}.chip.p{background:var(--purpleL);color:#5A4BC4}
+.warn{background:#FFF6EC;border:1px solid #F2DDBB;border-radius:8px;padding:10px 12px;font-size:12px;color:#8A5E22;
+  display:flex;gap:8px;line-height:1.55;margin:10px 0}
+.warn .material-icons{font-size:17px;color:var(--amber);flex:none;margin-top:1px}
+.risk{background:#FAEAE3;border:1px solid #EDCDBC;border-radius:8px;padding:11px 12px;font-size:12.5px;color:#8A4430;
+  line-height:1.65;margin:10px 0}
+.risk .material-icons{font-size:17px;flex:none;vertical-align:-4px}
+textarea,input[type=text],input[type=number],select{width:100%;border:1px solid var(--line);border-radius:8px;
+  padding:11px;font-size:14px;font-family:inherit;color:var(--t1);background:#FCFCFB;resize:none;outline:none}
+textarea:focus,input:focus,select:focus{border-color:var(--theme)}
+label.fl{font-size:12.5px;color:var(--t2);font-weight:600;display:block;margin:13px 0 5px}
+.hero{padding:18px 18px 22px;color:#fff;flex:none;background:linear-gradient(150deg,#4F9D8D,#2F6E60)}
+.hero h2{font-size:19px;font-weight:700;margin-bottom:5px}.hero p{font-size:12.5px;opacity:.92;line-height:1.65}
+.prog{height:5px;background:var(--line);border-radius:4px;overflow:hidden;margin-bottom:14px}
+.prog i{display:block;height:100%;background:var(--theme);border-radius:4px;transition:width .2s}
+.qv{font-size:16.5px;font-weight:600;line-height:1.6;min-height:52px;margin-bottom:14px}
+.op{display:flex;align-items:center;gap:10px;padding:12px;background:#fff;border:1.5px solid var(--line);
+  border-radius:var(--r);margin-bottom:9px;cursor:pointer;font-size:14.5px}
+.op.sel{border-color:var(--theme);background:var(--light);color:var(--dark);font-weight:600}
+.op .rd{width:18px;height:18px;border-radius:50%;border:2px solid #CBD4D0;flex:none}
+.op.sel .rd{border-color:var(--theme);background:var(--theme)}
+.sb2{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.sb2 .lb{width:82px;font-size:12.5px;font-weight:700;flex:none}
+.sb2 .bar{flex:1;height:9px;background:#EEF1EF;border-radius:6px;overflow:hidden}
+.sb2 .bar i{display:block;height:100%;border-radius:6px}
+.sb2 .vv{width:84px;text-align:right;font-size:11.5px;font-weight:600;flex:none;white-space:nowrap}
+.bcard{background:#fff;border-radius:var(--r);padding:14px 15px;margin-bottom:11px;cursor:pointer;
+  border:1px solid var(--line);position:relative}
+.bcard:active{background:#FAFBFA}
+.bcard.rec{border-color:var(--theme);box-shadow:0 0 0 3px var(--light)}
+.bcard h4{font-size:15px;font-weight:700;display:flex;align-items:center;gap:7px}
+.bcard .sub{font-size:11.5px;color:var(--t3);margin-top:3px}
+.bcard .bd{font-size:12.5px;color:var(--t2);line-height:1.6;margin-top:7px}
+.bcard .pf{display:flex;align-items:center;gap:6px;margin-top:9px;font-size:11px;color:var(--t3)}
+.bcard .pf i{width:6px;height:6px;border-radius:50%;background:var(--line);display:block}
+.bcard .pf i.f{background:var(--theme)}
+.tagrec{position:absolute;right:12px;top:12px;background:var(--theme);color:#fff;font-size:10px;padding:2px 8px;
+  border-radius:10px;font-weight:700}
+.node{display:flex;gap:11px;padding:12px 0;border-top:1px dashed var(--line)}
+.node:first-of-type{border-top:none}
+.node .ix{width:24px;height:24px;border-radius:50%;background:#EEF1EF;color:var(--t3);font-size:12px;font-weight:700;
+  flex:none;display:flex;align-items:center;justify-content:center}
+.node.dn .ix{background:var(--theme);color:#fff}
+.node.cu .ix{background:var(--amber);color:#fff}
+.node .nt{flex:1}
+.node b{font-size:13.5px}.node p{font-size:12px;color:var(--t2);line-height:1.6;margin-top:2px}
+.node .st{font-size:11px;margin-top:4px;color:var(--t3)}
+.days{display:flex;gap:5px;margin:10px 0}
+.days i{width:26px;height:26px;border-radius:50%;background:#EEF1EF;display:flex;align-items:center;
+  justify-content:center;font-size:11px;color:var(--t3);cursor:pointer;font-weight:600}
+.days i.on{background:var(--theme);color:#fff}
+.mask{position:absolute;inset:0;background:rgba(0,0,0,.45);z-index:60;display:none;align-items:flex-end;justify-content:center}
+.mask.on{display:flex}
+.sheet{background:#fff;width:100%;border-radius:20px 20px 0 0;padding:16px 16px 20px;max-height:88%;overflow-y:auto;
+  animation:up .22s ease}
+@keyframes up{from{transform:translateY(40px)}to{transform:translateY(0)}}
+.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.sh h3{font-size:16px;font-weight:700}
+.sh .material-icons{cursor:pointer;color:var(--t3)}
+.know{background:var(--blueL);border-radius:8px;padding:11px 12px;font-size:12.5px;line-height:1.7;color:#2C5388;margin:10px 0}
+.know b{color:#1F4270}
+.grid6{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
+.grid6 span{padding:8px 0;text-align:center;border:1px solid var(--line);border-radius:8px;font-size:13px;cursor:pointer;background:#fff}
+.grid6 span.on{background:var(--theme);color:#fff;border-color:var(--theme)}
+.multi span{display:inline-block;padding:6px 11px;border-radius:16px;border:1px solid var(--line);font-size:12.5px;
+  cursor:pointer;margin:0 6px 6px 0;background:#fff}
+.multi span.on{background:var(--purple);color:#fff;border-color:var(--purple)}
+.tl{border-left:2px solid var(--line);padding-left:13px;margin-left:4px;position:relative}
+.tl .ev{position:relative;padding:7px 0 12px}
+.tl .ev:before{content:'';position:absolute;left:-19px;top:12px;width:9px;height:9px;border-radius:50%;
+  background:var(--theme);border:2px solid #fff}
+.tl .ev b{font-size:13px}.tl .ev p{font-size:12px;color:var(--t2);line-height:1.6;margin-top:2px}
+.tl .ev span{font-size:10.5px;color:var(--t3)}
+.brth{width:140px;height:140px;border-radius:50%;background:var(--light);margin:14px auto;display:flex;
+  align-items:center;justify-content:center;flex-direction:column;transition:transform 4s ease}
+.brth b{font-size:18px;color:var(--dark)}.brth i{font-size:11.5px;color:var(--t2);font-style:normal}
+.empt{text-align:center;padding:30px 0;color:var(--t3)}
+.empt .material-icons{font-size:38px;opacity:.35;display:block;margin:0 auto 8px}
+.toast{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:12px 22px;background:rgba(20,28,25,.9);
+  color:#fff;border-radius:8px;font-size:13.5px;z-index:99;opacity:0;transition:.3s;pointer-events:none;
+  max-width:280px;text-align:center;line-height:1.5}
+.toast.show{opacity:1}
+.cmp{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
+.cmp th,.cmp td{border:1px solid var(--line);padding:6px 5px;text-align:center}
+.cmp th{background:#F7F8F7;color:var(--t2);font-weight:600}
+.up{color:var(--coral);font-weight:700}.dn{color:var(--theme-dark);font-weight:700}
+</style>
+</head>
+<body>
+<div class="phone">
+
+<div class="scr on" id="sc-test">
+  <div class="sb"><span>18:04</span><span style="font-size:11px">焦虑自评</span><span>5G ▮▮▮</span></div>
+  <div class="nb">焦虑自评</div>
+  <div class="sc" id="testBody"></div>
+</div>
+
+<div class="scr" id="sc-board">
+  <div class="sb"><span>18:06</span><span style="font-size:11px">自助板块</span><span>5G ▮▮▮</span></div>
+  <div class="nb">自助板块</div>
+  <div class="sc" id="boardBody"></div>
+</div>
+
+<div class="scr" id="sc-detail">
+  <div class="sb"><span>18:07</span><span style="font-size:11px">板块练习</span><span>5G ▮▮▮</span></div>
+  <div class="nb"><div class="back" onclick="closeDetail()"><span class="material-icons">arrow_back</span></div><span id="dTitle">板块</span></div>
+  <div class="sc" id="detailBody"></div>
+</div>
+
+<div class="scr" id="sc-mine">
+  <div class="sb"><span>18:08</span><span style="font-size:11px">我的记录</span><span>5G ▮▮▮</span></div>
+  <div class="nb">我的记录</div>
+  <div class="sc" id="mineBody"></div>
+</div>
+
+<div class="disc"><span class="material-icons">info</span><span>本测评仅供自我了解，不构成医学诊断</span></div>
+<div class="tabs">
+  <div class="tb" data-s="sc-test" onclick="go('sc-test')"><span class="material-icons">assignment</span><span>自评</span></div>
+  <div class="tb" data-s="sc-board" onclick="go('sc-board')"><span class="material-icons">apps</span><span>板块</span></div>
+  <div class="tb" data-s="sc-mine" onclick="go('sc-mine')"><span class="material-icons">person</span><span>我的</span></div>
+</div>
+
+<div class="mask" id="mQuiz"><div class="sheet" id="quizSheet"></div></div>
+<div class="mask" id="mStep"><div class="sheet" id="stepSheet"></div></div>
+<div class="mask" id="mInfo"><div class="sheet" id="infoSheet"></div></div>
+<div class="mask" id="mSOS"><div class="sheet" id="sosSheet"></div></div>
+<div class="toast" id="toast"></div>
+</div>
+
+<script>
+var DISC='本测评仅供自我了解，不构成医学诊断';
+/* ===== SCARED 41 题 ===== */
+var Q=[
+'当我感到害怕时，出现呼吸困难（出气不赢）','我在学校时感到头痛','我不喜欢与不太熟悉的人在一起',
+'如果我不在家里睡觉，就觉得内心不安','我经常担心别人是不是喜欢我','当我害怕时，感到马上要死去似的',
+'我总是感到紧张不安','父母无论去哪里我总是离不开他们','别人说我好像很紧张的样子',
+'当我与不熟悉的人在一起时就感到紧张','在学校时就出现肚子痛','当我害怕时，自己感觉快要发疯，失去控制了',
+'我总担心让我自己一个人睡觉','我担心自己不象其他孩子一样好',
+'当我害怕时，感到恍恍惚惚，好像周围的一切不真实似的','我梦见父母发生了不幸的事情','我担心又要去上学',
+'我害怕时，心跳会加快','我手脚发抖打颤','我梦见发生了对我不利的事情',
+'我对于一些精心为我而安排的事感到不安和不自在','当我害怕时，我会出汗','我是一个忧虑的人',
+'我无缘无故地感到害怕','我害怕一个人呆在家里','我觉得和不熟悉的人说话很困难',
+'我害怕时感到不能呼吸','别人说我担心得太多了','我不愿离开自己的家',
+'我担心以前那种紧张（或惊恐）的感觉再次出现','我总担心父母会出事','当我与不熟悉的人在一起时，觉得害羞',
+'我担心将来会发生什么事情','我害怕时感到恶心、想吐','我担心自己能不能把事情做好','我害怕去上学',
+'我担忧已发生了什么事','我害怕时，感到头昏',
+'当我与其他伙伴或大人在一起做事情时（如在朗读、说话、游戏、做体育活动时），如果他们看着我，我就感到紧张',
+'当我去参加活动、跳舞或者有不熟悉的人在场时，就感到紧张','我是一个害羞的人'];
+var OPT3=['没有此问题','有时有','经常有'];
+var SUBS=[
+ {k:'PAN',n:'躯体化/惊恐',it:[1,6,9,12,15,18,19,22,24,27,30,34,38]},
+ {k:'GEN',n:'广泛性焦虑',it:[5,7,14,21,23,28,33,35,37]},
+ {k:'SEP',n:'分离性焦虑',it:[4,8,13,16,20,25,29,31]},
+ {k:'SOC',n:'社交焦虑',it:[3,10,26,32,39,40,41]},
+ {k:'SCH',n:'学校回避',it:[2,11,17,36]}];
+SUBS.forEach(function(s){s.max=s.it.length*2;});
+
+/* ===== 五个板块 ===== */
+var B={
+GEN:{n:'忧管解难',sub:'对应：广泛性焦虑',tone:'blue',
+ brief:'把到处乱跑的担忧收进固定时间，再练打断与回到任务。分四级，每级约一周。',
+ type:'ladder',
+ levels:[
+  {n:'一级 · 把担忧推到固定时间段',
+   d:'担忧不是被说服消失的，而是被推迟后不再全天占用你。本级只做一件事：任何时间冒出担忧，一律记一行字，推到你的固定时段再想。',
+   need:'开始前请先设置你的担忧时段',
+   check:'今天做到了：冒出的担忧被我推到时段里',
+   back:false},
+  {n:'二级 · 担忧出现时立马打断',
+   d:'一级你已经会推迟了。本级把间隔缩短：担忧一冒头就当场打断，不等到时段。打断动作要具体、要身体参与。',
+   need:'选一个你的打断动作（可改）',
+   check:'今天做到了：担忧冒头时我当场打断了它',
+   back:true},
+  {n:'三级 · 做任务时能停止并回到任务',
+   d:'轻松任务里不被担忧带走，和压力任务里不被带走，是两种难度。本级只在普通任务上练：停下担忧，回到手上那一步。',
+   need:'本周你要守住的日常任务',
+   check:'今天做到了：任务中担忧冒头，我回到任务里了',
+   back:true},
+  {n:'四级 · 压力任务中也能停止并回到任务',
+   d:'最后升到高压场景：限时作业、考试、被提问、当众发言。这一级最难，做不到不代表失败，回到三级再练一周即可。',
+   need:'本周的高压任务是什么',
+   check:'今天做到了：压力任务中我停住担忧并回到了任务',
+   back:true}]},
+
+SOC:{n:'检期践行',sub:'对应：社交焦虑',tone:'purple',
+ brief:'选一个安全的社交情境，写下担心的结果，用小行动去验证预期和实际差多少。',
+ edu:{t:'先告诉你一件事',b:'别人的目光其实并没有过度聚焦在你身上。旁人更多在关注自己、想自己待会儿要说什么。这不是安慰你，而是社交焦虑研究里最容易被验证的一条：你预测的"别人会盯着我的失误"，实际发生率远低于预期。所以本级练习的关键不是"表现好"，而是<b>把预测和实际放在一起比</b>。'},
+ steps:[
+  {t:'选择安全社交情境',d:'挑一个你觉得安全、代价小的场景。别一上来就选最难的那个。',f:[
+    {k:'scene',l:'你选的场景（例：课间和同桌聊两句）',ty:'area',ph:'写具体：在哪里、和谁、做什么'},
+    {k:'why',l:'为什么这个场景你觉得还算安全',ty:'input',ph:'例：TA 平时会回应我'}]},
+  {t:'写出担心的结果',d:'把脑子里那句"会发生什么"写下来，并给一个预测分数。不写出来的担忧无法被检验。',f:[
+    {k:'fear',l:'你担心发生的具体结果',ty:'area',ph:'例：我说到一半会卡住，TA 会觉得我很怪'},
+    {k:'poss',l:'你认为它发生的概率',ty:'scale0',max:100,unit:'%'},
+    {k:'nerv',l:'现在想到这个场景，焦虑程度',ty:'scale',max:10,unit:'/10'}]},
+  {t:'设计难度较低的小行动',d:'小到你觉得"这不算什么"。只写一个动作，不写目标。',f:[
+    {k:'act',l:'你的小行动（一句话，可执行）',ty:'area',ph:'例：先说一句"你今天那支笔挺好看"，说完说不说下一句都行'},
+    {k:'when',l:'打算什么时候做',ty:'input',ph:'例：明天第二节下课'}]},
+  {t:'尝试',d:'做完就记录，不管结果如何都算完成。做了以后立刻填焦虑分，别让它在脑子里过夜。',f:[
+    {k:'did',l:'做了吗',ty:'multi',opts:['做了，说出口了','做了一半','没做，但我留在了现场'],one:true},
+    {k:'nerv2',l:'过程中的焦虑程度',ty:'scale',max:10,unit:'/10'},
+    {k:'what',l:'实际上发生了什么（只写事实）',ty:'area',ph:'例：我说完卡了两秒，TA 笑了一下，然后问我在哪买的'}]},
+  {t:'比较预期与实际',d:'这一步是本级真正的收获：你自己的数据在告诉你预测准不准。',f:[
+    {k:'hit',l:'你担心的结果出现了吗',ty:'multi',opts:['完全没出现','出现了一点','出现了','还没判断得了'],one:true},
+    {k:'learn',l:'这次比较让你发现的一件事',ty:'area',ph:'例：卡住两秒根本不会被注意到'}]}]},
+
+SEP:{n:'分忧计划',sub:'对应：分离性焦虑',tone:'teal',
+ brief:'和可信的照护者一起，把"我不能离开"换成一个可以试的小目标，再一起调整。',
+ note:{t:'这个板块需要你身边的成人一起',b:'分离性焦虑的练习一定要在真实的安全条件下进行。请找一位你信任的家长或照护者陪你走完第 3、5 步；如果暂时找不到可谈的人，请先看"需要帮助时"。'},
+ steps:[
+  {t:'说清担忧',d:'把"我不想离开"背后的那一句具体话说出来：你担心离开之后会发生什么。',f:[
+    {k:'fear',l:'我担心的事（越具体越好）',ty:'area',ph:'例：妈妈出门后会不会出事 / 我在校时找不到她'},
+    {k:'pic',l:'脑子里最清楚的那个画面',ty:'area',ph:'例：电话打不通，家里没人'}]},
+  {t:'确认环境安全',d:'焦虑会把不确定的事当成危险。这一项逐条确认，勾不上的要写出来问大人。',f:[
+    {k:'ok',l:'以下哪些你确认是真的',ty:'multi',opts:['家里大人在时会接电话','我知道家长和老师的联系方式','我所待的地方有可信的成人','学校有老师可以找我','我把担心说给大人听过'],one:false},
+    {k:'rest',l:'还有哪些不确定',ty:'area',ph:'例：不确定妈妈开会时能不能接电话'}]},
+  {t:'与可信照护者商定适龄小目标',d:'和大人一起定一个年龄合适、能做到的分离小目标。目标要小到你有可能成功。',f:[
+    {k:'who',l:'你和谁谈的',ty:'input',ph:'例：妈妈 / 班主任'},
+    {k:'goal',l:'商定的小目标',ty:'area',ph:'例：先试着在校午餐后自己回宿舍 10 分钟，不行就找老师'},
+    {k:'adult',l:'TA 的建议或调整',ty:'area',ph:'例：妈妈说可以，但让我第一天先在门口等她'}]},
+  {t:'尝试',d:'按商定的目标试一次，结果无论好坏都记录。',f:[
+    {k:'res',l:'试的结果',ty:'multi',opts:['顺利完成了','完成了一部分','中途回来求助了','还没试'],one:true},
+    {k:'nerv1',l:'分开前焦虑',ty:'scale',max:10,unit:'/10'},
+    {k:'nerv2',l:'过程中最高焦虑',ty:'scale',max:10,unit:'/10'},
+    {k:'help',l:'过程中你用了什么办法',ty:'input',ph:'例：看手机里妈妈的留言'}]},
+  {t:'共同调整',d:'和大人一起看结果，把目标改到"下次能做到"的难度。这一步不是失败修正，是校准。',f:[
+    {k:'part',l:'哪一部分是顺利的',ty:'area'},
+    {k:'next',l:'下次改成什么目标（写具体的）',ty:'area',ph:'例：把 10 分钟改成 5 分钟，第二天再 10 分钟'}]}]},
+
+PAN:{n:'识身应变',sub:'对应：躯体化 / 惊恐',tone:'coral',
+ brief:'先认出自己的身体信号，再搞明白它和焦虑的关系，然后用呼吸把它降下来。',
+ edu:{t:'焦虑与身体反应的关系',b:'心跳快、喘不上气、头晕、手抖、恶心——这些是身体的"战斗或逃跑"被启动了：肾上腺素让心跳和呼吸加速，肌肉供血改变， 消化变慢。它们<b>感觉极其难受，但本身不危险</b>。真正让你害怕的常常不是症状，而是"我是不是要出事了"这个解释。所以本板块的顺序是：先记录 → 再理解 → 后用呼吸把警报调低。'},
+ steps:[
+  {t:'记录感觉及情境',d:'先把身体信号和当时的情境记下来，不评价、不解释。',f:[
+    {k:'body',l:'当时的身体感觉（可多选）',ty:'multi',opts:['心跳加快','呼吸困难/出气不赢','头晕','手脚发抖','出汗','恶心想吐','恍恍惚惚不真实','快要失控的感觉'],one:false},
+    {k:'sit',l:'当时正在做什么 / 在哪里',ty:'area',ph:'例：数学课上被叫起来答题'},
+    {k:'lv',l:'当时的难受程度',ty:'scale',max:10,unit:'/10'}]},
+  {t:'学习焦虑与身体反应的关系',d:'读完左边这张说明，用自己的话写一句"我原来以为是____，其实是____"。',f:[
+    {k:'own',l:'你自己的话',ty:'area',ph:'例：我以为是我心脏有问题，其实是身体先紧张了'}]},
+  {t:'尝试舒适自然的呼吸',d:'不要刻意深吸气。以你舒适的节律让呼气比吸气长一点即可；如果发晕或更难受，立刻停下恢复自然呼吸。',f:[]},
+  {t:'记录体验',d:'练前练后各打一个分，看看这个办法对你有没有用。',f:[
+    {k:'b1',l:'练之前的难受程度',ty:'scale',max:10,unit:'/10'},
+    {k:'b2',l:'练之后的难受程度',ty:'scale',max:10,unit:'/10'},
+    {k:'which',l:'哪一部分对你最有用',ty:'multi',opts:['呼气变长','把手放在肚子上感觉起伏','肌肉先绷紧再松开','数秒让我分心','都不太行'],one:true},
+    {k:'note',l:'一句话记下这次体验',ty:'input'}]}]},
+
+SCH:{n:'溯因支持',sub:'对应：学校回避',tone:'amber',
+ brief:'不先解决"去不去"，先把最难的环节找出来，弄清原因，再和可信成人一起定支持步骤。',
+ warn:{t:'先说重要的',b:'如果不想上学的原因是<b>校园霸凌、被同学孤立或威胁、明显的学习困难、老师的不当对待，或者身体疾病</b>，那么单靠自己调整是不够的，这些情况需要寻求专业支持：告诉家长和你信任的老师，拨打 <b>12355</b>（青少年服务台）；如果人身安全受到威胁，请立即拨打 <b>110</b>。这不是告状，这是让大人来承担责任。'},
+ steps:[
+  {t:'找出最困难的上学环节',d:'"不想上学"通常不是全天都不行，而是某几个环节最难。把它们点出来。',f:[
+    {k:'link',l:'最困难的环节（可多选）',ty:'multi',opts:['起床出门','进校门','第一节课','课间/午休','食堂吃饭','被老师提问','考试','放学排队/等人','全天都难'],one:false},
+    {k:'worst',l:'其中最难的一个',ty:'input',ph:'例：课间，不知道去哪里'}]},
+  {t:'了解同伴、学习、身体等因素',d:'逐类看一下是什么在支撑这份困难，选出来后可以补充说明。',f:[
+    {k:'fac',l:'符合你的因素（可多选）',ty:'multi',opts:['同伴关系紧张或被孤立','被欺负或被起哄','功课跟不上/考试压力','被老师批评过','在学校身体不舒服（头疼肚子疼）','睡眠不足','家里的事让我分心','说不清，就是一想到就难受'],one:false},
+    {k:'more',l:'想补充的情况',ty:'area',ph:'可留空'}]},
+  {t:'选择可信成人',d:'写下你要告诉的人。第 2 步里若出现霸凌、被威胁，这一步必做，不要跳过。',f:[
+    {k:'who',l:'你打算告诉谁',ty:'multi',opts:['爸爸/妈妈','其他家人','班主任','学校心理老师','喜欢的任课老师','亲戚','还没想好找谁'],one:true},
+    {k:'how',l:'你准备怎么说第一句',ty:'area',ph:'例：我最近在学校很难受，想跟你说一下'},
+    {k:'when',l:'什么时候说',ty:'input',ph:'例：这周六早上'}]},
+  {t:'共同制定支持步骤',d:'和这位成人一起定 3 步，第一步要小到明天就能做到。',f:[
+    {k:'s1',l:'第一步（最小、明天可做）',ty:'area',ph:'例：先只做到进校门，在保安室旁边待 10 分钟'},
+    {k:'s2',l:'第二步（一周内）',ty:'area',ph:'例：上午第一节课前离开也可以，先上一节课'},
+    {k:'s3',l:'第三步（两周内）',ty:'area'},
+    {k:'whoHelp',l:'谁来配合你（分别写）',ty:'input',ph:'例：妈妈陪我到校门口，班主任允许我去心理室'}]}]}
+};
+var BK=['GEN','SOC','SEP','PAN','SCH'];
+var TONE={blue:{m:'#5C8AE0',l:'#EAF1FD',t:'#2C5388'},purple:{m:'#7B6CC4',l:'#EFEAFC',t:'#5A4BC4'},
+ teal:{m:'#3F9AA8',l:'#E6F4F6',t:'#2C6E79'},coral:{m:'#D96A4A',l:'#FAEAE3',t:'#A9452A'},
+ amber:{m:'#C89B3C',l:'#FBF3E2',t:'#8A6614'}};
+
+/* ===== 状态 ===== */
+var DB,K='scared_v3';
+function rid(){return Math.random().toString(36).slice(2,7);}
+function blank(){var o={consent:false,tests:[],main:null,boards:{},records:[]};
+  BK.forEach(function(k){o.boards[k]={};});
+  o.boards.GEN={lv:0,days:{}};
+  BK.forEach(function(k){ if(k!=='GEN') o.boards[k]={i:0,d:{}}; });
+  o.boards.GEN.d={};
+  return o;}
+function load(){try{var r=localStorage.getItem(K);DB=r?JSON.parse(r):blank();}catch(e){DB=blank();}
+  if(!DB.boards){DB=blank();} }
+function save(){try{localStorage.setItem(K,JSON.stringify(DB));}catch(e){}}
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function ts(){return Date.now();}
+function rel(t){var m=Math.floor((ts()-t)/6e4);if(m<1)return'刚刚';if(m<60)return m+'分钟前';
+  var h=Math.floor(m/60);if(h<24)return h+'小时前';return Math.floor(h/24)+'天前';}
+function dt(t){var d=new Date(t);return (d.getMonth()+1)+'/'+d.getDate()+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);}
+function toast(m){var t=$('toast');t.innerHTML=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show');},2200);}
+function openM(id){$(id).classList.add('on');}
+function closeM(id){$(id).classList.remove('on');}
+function go(id){
+  var all=document.querySelectorAll('.scr');for(var i=0;i<all.length;i++)all[i].classList.remove('on');
+  $(id).classList.add('on');
+  var tb=document.querySelectorAll('.tb');
+  for(var j=0;j<tb.length;j++) tb[j].classList.toggle('on', tb[j].getAttribute('data-s')===id);
+  if(id==='sc-test')renderTest();
+  if(id==='sc-board')renderBoards();
+  if(id==='sc-mine')renderMine();
+  if(id==='sc-detail')renderDetail();
+}
+
+/* ===== 计分 ===== */
+function score(ans){
+  var total=0,subs={};
+  SUBS.forEach(function(s){var v=0;s.it.forEach(function(n){v+=(ans[n-1]||0);});subs[s.k]=v;total+=v;});
+  var rate={};
+  SUBS.forEach(function(s){rate[s.k]=subs[s.k]/s.max;});
+  var order=SUBS.slice().sort(function(a,b){return (rate[b.k]-rate[a.k])||(subs[b.k]-subs[a.k]);});
+  return {total:total,subs:subs,rate:rate,main:order[0].k,mainName:order[0].n,order:order};
+}
+function levelOf(total){
+  if(total>=25) return {t:'总分 ≥25',d:'按国际常用界值已达提示线（>30 特异性更高），建议尽快让专业人员做一次评估'};
+  if(total>=23) return {t:'总分 ≥23',d:'按中国城市常模第 80 百分位划界分，已提示存在焦虑障碍的可能，建议找学校心理老师或家长陪同就诊评估'};
+  if(total>=15) return {t:'总分 15–22',d:'尚未到达划界分，但已有可感知的困扰，自助练习合适，同时留意两周后的复测变化'};
+  return {t:'总分 <15',d:'在常见范围内，练习可作为日常情绪管理'};
+}
+
+/* ===== 屏 1：自评 ===== */
+function renderTest(){
+  var el=$('testBody'),h='';
+  var last=DB.tests.length?DB.tests[DB.tests.length-1]:null;
+  h+='<div class="hero"><h2>儿童焦虑性情绪障碍筛查表</h2>'+
+     '<p>SCARED 中文版 · 共 41 题 · 按最近 3 个月的实际感受作答 · 无对错，不要考虑怎样回答才"正确"</p></div><div style="height:14px"></div>';
+  if(!DB.consent){
+    h+='<div class="card"><b style="font-size:14.5px">开始前请看一下</b>'+
+       '<div class="mut" style="margin-top:6px">1. 本表适用于 8–18 岁自评。未满 14 周岁请在父母或监护人知情同意后使用。<br>'+
+       '2. '+DISC+'，筛查结果不能代替精神科或心理科的面诊。<br>'+
+       '3. 建议把结果给一位你信任的大人看，一起决定下一步。<br>'+
+       '4. 答案只存在这台设备上，不会上传到公开位置。</div>'+
+       '<div style="height:12px"></div><button class="btn" onclick="agree()">我了解了，开始自评</button></div>';
+    el.innerHTML=h;return;
+  }
+  h+='<div class="card">';
+  if(!last){
+    h+='<b style="font-size:15px">还没有测评记录</b><div class="mut" style="margin-top:5px">先做一次自评，系统会按五个分量表判断你更适合哪个板块。</div>';
+  }else{
+    h+='<div class="row bet"><div><b style="font-size:15px">总分 '+last.total+' / 82</b>'+
+       '<div class="tiny" style="margin-top:2px">'+dt(last.at)+' · 主要板块：'+last.mainName+'</div></div>'+
+       '<span class="chip '+(last.total>=23?'a':'')+'">'+levelOf(last.total).t+'</span></div><div style="height:10px"></div>';
+    SUBS.forEach(function(s){
+      var v=last.subs[s.k],pc=Math.round(v/s.max*100);
+      h+='<div class="sb2"><span class="lb">'+s.n+'</span><span class="bar"><i style="width:'+Math.max(4,pc)+'%;background:'+TONE[B[s.k].tone].m+'"></i></span>'+
+         '<span class="vv">'+v+'/'+s.max+' · '+pc+'%</span></div>';
+    });
+    h+='<div class="tiny" style="margin-top:4px">分量表界值各来源不一致，因此板块推荐按<b>得分率</b>排序，不套用未统一的临界分。</div>';
+    h+='<div style="height:12px"></div><button class="btn" onclick="startQuiz(\'re\')">再测一次（看水平变化）</button>';
+    h+='<div style="height:8px"></div><button class="btn l" onclick="go(\'sc-board\')">去我的板块练习</button>';
+    return el.innerHTML=h+'</div>';
+  }
+  h+='<div style="height:12px"></div><button class="btn" onclick="startQuiz(\'first\')">开始 41 题自评</button></div>';
+  h+='<div class="warn"><span class="material-icons">school</span><span>五个分量表分别对应五个自助板块：广泛性焦虑 → 忧管解难、社交焦虑 → 检期践行、分离性焦虑 → 分忧计划、躯体化/惊恐 → 识身应变、学校回避 → 溯因支持。</span></div>';
+  h+='<div class="card"><b style="font-size:14px">需要帮助时</b><div class="mut" style="margin-top:5px">12356 心理援助（24 小时）· 12355 青少年服务台 · 遇危险 110</div>'+
+     '<div style="height:10px"></div><button class="btn l sm" onclick="showSOS()">查看求助方式</button></div>';
+  h+='<button class="btn l" onclick="demo()">载入示例数据</button><div style="height:12px"></div>';
+  el.innerHTML=h;
+}
+function agree(){DB.consent=true;save();renderTest();startQuiz('first');}
+var qi=0,qa=null,qmode='first';
+function startQuiz(mode){qmode=mode;qi=0;qa=new Array(41).fill(null);renderQ();openM('mQuiz');}
+function renderQ(){
+  var h='<div class="sh"><h3>'+(qmode==='first'?'自评':'复测')+' 第 '+(qi+1)+'/41 题</h3>'+
+    '<span class="material-icons" onclick="quitQuiz()">close</span></div>';
+  h+='<div class="prog"><i style="width:'+((qi+1)/41*100)+'%"></i></div>';
+  h+='<div class="tiny">最近 3 个月，下面这句话符合你的程度</div>';
+  h+='<div class="qv">'+(qi+1)+'. '+Q[qi]+'</div>';
+  for(var i=0;i<3;i++){
+    h+='<div class="op'+(qa[qi]===i?' sel':'')+'" onclick="pk('+i+')"><span class="rd"></span><span>'+OPT3[i]+'</span></div>';
+  }
+  h+='<div class="row" style="gap:8px;margin-top:12px">';
+  h+='<button class="btn l" style="flex:1" onclick="pv()"'+(qi===0?' disabled':'')+'>上一题</button>';
+  h+='<button class="btn g" style="flex:1" onclick="fill()">跳过剩余</button>';
+  h+='<button class="btn" style="flex:1.3" onclick="nx()"'+(qa[qi]===null?' disabled':'')+'>'+(qi===40?'看结果':'下一题')+'</button></div>';
+  h+='<div class="tiny" style="margin-top:10px;text-align:center">'+DISC+'</div>';
+  $('quizSheet').innerHTML=h;
+}
+function pk(v){qa[qi]=v;renderQ();}
+function pv(){if(qi>0){qi--;renderQ();}}
+function fill(){for(var i=qi;i<41;i++)if(qa[i]===null)qa[i]=1;toast('剩余题目已按"有时有"填充');renderQ();}
+function quitQuiz(){qa=null;closeM('mQuiz');}
+function nx(){
+  if(qa[qi]===null)return;
+  if(qi<40){qi++;renderQ();return;}
+  finishQuiz();
+}
+function finishQuiz(){
+  var r=score(qa);
+  var rec={at:ts(),total:r.total,subs:r.subs,rate:r.rate,main:r.main,mainName:r.mainName,order:r.order.map(function(s){return s.k;})};
+  DB.tests.push(rec);
+  if(qmode==='first'||!DB.main){DB.main=r.main;}
+  closeM('mQuiz');save();
+  go('sc-test');
+  if(r.total>=25) toast('结果已生成，总分已达提示线');
+  else toast('结果已生成，主要板块：'+r.mainName);
+}
+
+/* ===== 屏 2：板块列表 ===== */
+function curMain(){ if(DB.tests.length) return DB.tests[DB.tests.length-1]; return null; }
+function boardProg(k){
+  if(k==='GEN'){var g=DB.boards.GEN;var d=0;for(var i=0;i<4;i++){if((g.days['L'+i]||[]).filter(function(x){return x;}).length>=5)d++;}return {d:d,t:4,lv:g.lv};}
+  var b=DB.boards[k];return {d:b.i,t:B[k].steps.length};
+}
+function renderBoards(){
+  var el=$('boardBody'),h='';
+  var last=curMain();
+  if(!last){
+    h+='<div class="empt"><span class="material-icons">assignment</span>先完成一次自评<br>系统会按分量表推荐板块'+
+      '<div style="height:14px"></div><button class="btn sm" onclick="go(\'sc-test\')">去自评</button></div>';
+    el.innerHTML=h;return;
+  }
+  h+='<div class="card" style="background:var(--light);border:none"><div class="row bet">'+
+     '<div><b style="font-size:14px;color:var(--dark)">为你推荐：'+B[last.main].n+'</b>'+
+     '<div class="tiny" style="margin-top:2px">'+last.mainName+'得分率最高 · '+Math.round(last.rate[last.main]*100)+'%</div></div>'+
+     '<span class="chip">'+last.mainName+'</span></div></div>';
+  BK.forEach(function(k){
+    var s=SUBS.filter(function(x){return x.k===k;})[0];
+    var v=last.subs[k],pc=Math.round(v/s.max*100);
+    var pr=boardProg(k),rec=(DB.main===k||last.main===k);
+    var tn=TONE[B[k].tone];
+    h+='<div class="bcard'+(rec?' rec':'')+'" onclick="openBoard(\''+k+'\')">';
+    if(rec)h+='<span class="tagrec">推荐</span>';
+    h+='<h4><span style="color:'+tn.m+'">●</span>'+B[k].n+'</h4>';
+    h+='<div class="sub">'+B[k].sub+' · 本次得分 '+v+'/'+s.max+'（'+pc+'%）</div>';
+    h+='<div class="bd">'+B[k].brief+'</div>';
+    h+='<div class="pf">';
+    var total=pr.t;for(var i=0;i<total;i++)h+='<i class="'+(i<pr.d?'f':'')+'"></i>';
+    h+='<span style="margin-left:6px">'+(k==='GEN'?('第 '+(pr.lv+1)+' 级 / 共 4 级'):('第 '+pr.d+' 步 / 共 '+total+' 步'))+'</span>';
+    h+='</div></div>';
+  });
+  h+='<div class="warn"><span class="material-icons">info</span><span>板块不会锁死：任何板块都可以进入练习，推荐只表示从哪开始收益最大。'+DISC+'。</span></div>';
+  el.innerHTML=h;
+}
+
+/* ===== 屏 3：板块详情 ===== */
+var cur=null;
+function openBoard(k){cur=k;go('sc-detail');}
+function closeDetail(){cur=null;go('sc-board');}
+function renderDetail(){
+  if(!cur)return;
+  var cfg=B[cur],el=$('detailBody'),h='';
+  $('dTitle').innerHTML=cfg.n;
+  var tn=TONE[cfg.tone];
+  h+='<div class="hero" style="background:linear-gradient(150deg,'+tn.m+','+tn.t+')"><h2>'+cfg.n+'</h2>'+
+     '<p>'+cfg.sub+'　·　'+cfg.brief+'</p></div><div style="height:14px"></div>';
+  if(cfg.edu){
+    h+='<div class="know"><b>'+cfg.edu.t+'</b><br>'+cfg.edu.b+'</div>';
+  }
+  if(cfg.note){h+='<div class="risk"><span class="material-icons">supervisor_account</span> '+cfg.note.b+'</div>';}
+  if(cfg.warn){h+='<div class="risk"><span class="material-icons">gavel</span> '+cfg.warn.b+
+    '<div style="height:8px"></div><button class="btn w sm" onclick="showSOS(\'bully\')">查看求助方式</button></div>';}
+  if(cfg.type==='ladder'){
+    var g=DB.boards.GEN;
+    for(var i=0;i<4;i++){
+      var L=cfg.levels[i],days=g.days['L'+i]||[];
+      var cnt=days.filter(function(x){return x;}).length;
+      var done=cnt>=5, curL=(g.lv===i), lock=(i>g.lv);
+      h+='<div class="node '+(done?'dn':(curL?'cu':''))+'">';
+      h+='<span class="ix">'+(done?'<span class="material-icons" style="font-size:15px">check</span>':(i+1))+'</span>';
+      h+='<div class="nt"><b>'+L.n+'</b><p>'+L.d+'</p>';
+      h+='<div class="st">本周记录 '+cnt+'/7 天 · 每级约一周，坚持 5 天即可进入下一级'+(lock?' · 未解锁':'')+'</div>';
+      if(!lock){h+='<div style="height:8px"></div><button class="btn '+(done?'g':'')+' sm" onclick="openLevel('+i+')">'+(done?'查看本级记录':'开始本级练习')+'</button>';}
+      h+='</div></div>';
+    }
+    h+='<div class="warn"><span class="material-icons">undo</span><span>本级做不到时可以<b>退回上一级</b>再练一周，这不是失败：四级设计的意义就是让难度匹配你现在的能力。</span></div>';
+  }else{
+    var b=DB.boards[cur];
+    for(var j=0;j<cfg.steps.length;j++){
+      var st=cfg.steps[j],fin=(j<b.i),now=(j===b.i);
+      h+='<div class="node '+(fin?'dn':(now?'cu':''))+'">';
+      h+='<span class="ix">'+(fin?'<span class="material-icons" style="font-size:15px">check</span>':(j+1))+'</span>';
+      h+='<div class="nt"><b>'+st.t+'</b><p>'+st.d+'</p>';
+      if(fin){
+        var dd=b.d['s'+j]||{},parts=[];
+        st.f.forEach(function(fd){var val=dd[fd.k];if(val==null||val==='')return;
+          parts.push(fd.l.replace(/（.*?）/,'')+'：'+(Array.isArray(val)?val.join('、'):val));});
+        h+='<div class="st" style="color:'+tn.t+'">'+esc(parts.join('　·　').slice(0,160))+'</div>';
+      }else if(!now){h+='<div class="st">完成上一步后解锁</div>';}
+      if(now){h+='<div style="height:8px"></div><button class="btn sm" onclick="openStep('+j+')">开始这一步</button>';}
+      if(fin){h+='<div style="height:8px"></div><button class="btn l sm" onclick="redoStep('+j+')">重新填写</button>';}
+      h+='</div></div>';
+    }
+    if(b.i>=cfg.steps.length){
+      h+='<div class="card" style="background:'+tn.l+';border:1px solid '+tn.m+'33">'+
+        '<b style="color:'+tn.t+';font-size:14px">本板块已完成</b>'+
+        '<div class="mut" style="margin-top:5px">建议现在做一次复测，对照这个板块对应的分量表看水平有没有变化。</div>'+
+        '<div style="height:10px"></div><button class="btn" onclick="startQuiz(\'re\')">再测一次 SCARED</button></div>';
+    }
+  }
+  h+='<div style="height:8px"></div><button class="btn l" onclick="showSOS()">需要帮助时（热线与转介）</button>';
+  el.innerHTML=h;
+}
+
+/* ===== 忧管解难：本级面板 ===== */
+function openLevel(i){
+  var L=B.GEN.levels[i],g=DB.boards.GEN,key='L'+i;
+  if(!g.days[key])g.days[key]=new Array(7).fill(false);
+  var h='<div class="sh"><h3>'+L.n+'</h3><span class="material-icons" onclick="closeM(\'mStep\')">close</span></div>';
+  h+='<div class="mut">'+L.d+'</div>';
+  if(i===0){
+    h+='<label class="fl">'+L.need+'</label>'+
+       '<select id="gtime"><option value="">选择时段</option>';
+    ['放学后 16:30','晚饭前 18:00','晚饭后 19:00','晚饭后 20:00','睡前一小时（不建议）'].forEach(function(o){h+='<option>'+o+'</option>';});
+    h+='</select><label class="fl">时长</label><select id="gdur"><option>10 分钟</option><option selected>15 分钟</option><option>20 分钟</option></select>';
+    h+='<div class="know" style="margin-top:10px"><b>怎么推迟</b><br>担忧一冒头，只在纸上记一句话（"担心明天默写"），告诉自己"到 19:00 再想"，然后回到手上的事。时段到了集中想这堆担忧，能解决的写一步，不能解决的划掉。</div>';
+  }
+  if(i===1){
+    h+='<label class="fl">'+L.need+'</label><div class="multi" id="gcut">';
+    ['心里喊"停"','站起来走两步','用凉水洗手','说出眼前 5 样东西','捏一下手腕','深呼吸一次后立刻做事'].forEach(function(o){h+='<span onclick="tog(this)">'+o+'</span>';});
+    h+='</div><div class="know" style="margin-top:10px"><b>关键是"立马"</b><br>不争论、不分析内容，只打断动作本身。打断后马上给手上一件事（写字、整理、走路），让身体没有空位继续担忧。</div>';
+  }
+  if(i===2||i===3){
+    h+='<label class="fl">'+L.need+'</label><textarea id="gtask" rows="2" placeholder="'+(i===2?'例：写作业、整理书包、洗碗':'例：限时卷子、上台朗读、被提问')+'"></textarea>';
+    h+='<div class="know" style="margin-top:10px"><b>回到任务的方式</b><br>不要试图"先把担忧想通"再做事。做法是：停 → 指出下一步最小的动作 → 立刻做那个动作。担忧还在也没关系，它可以在，但你已经在做。</div>';
+  }
+  h+='<label class="fl" style="margin-top:16px">本周记录（点一天=那天做到了）</label><div class="days" id="gday">';
+  var nm=['一','二','三','四','五','六','日'];
+  for(var d=0;d<7;d++)h+='<i class="'+(g.days[key][d]?'on':'')+'" onclick="togDay('+i+','+d+')">'+nm[d]+'</i>';
+  h+='</div><div class="tiny">坚持 5 天可进入下一级</div>';
+  h+='<div style="height:14px"></div><button class="btn" onclick="doneLevel('+i+')">记录本级完成</button>';
+  if(L.back){h+='<div style="height:8px"></div><button class="btn l" onclick="backLevel('+i+')">这级做不了，退回上一级</button>';}
+  $('stepSheet').innerHTML=h;openM('mStep');
+}
+function tog(el){el.classList.toggle('on');}
+function togDay(i,d){
+  var g=DB.boards.GEN,key='L'+i;
+  if(!g.days[key])g.days[key]=new Array(7).fill(false);
+  g.days[key][d]=!g.days[key][d];save();openLevel(i);
+}
+function doneLevel(i){
+  var g=DB.boards.GEN,key='L'+i;
+  var cnt=(g.days[key]||[]).filter(function(x){return x;}).length;
+  if(cnt<5){toast('先记满 5 天再完成本级（当前 '+cnt+' 天）');return;}
+  var L=B.GEN.levels[i];
+  var extra='';
+  if(i===0){var t=$('gtime'),u=$('dur');extra='时段：'+(t&&t.value?t.value:'未设置')+(u&&u.value?' · '+u.value:'');
+    if(t&&!t.value){toast('请先设置一个担忧时段');return;}}
+  if(i===1){var cs=document.querySelectorAll('#gcut .on'),a=[];for(var k=0;k<cs.length;k++)a.push(cs[k].innerHTML);extra='打断动作：'+(a.join('、')||'未选');}
+  if(i===2||i===3){var tk=$('gtask');extra='任务：'+(tk&&tk.value.trim()?tk.value.trim():'未填');}
+  DB.records.push({at:ts(),b:'GEN',name:L.n,txt:extra||'本周坚持 '+cnt+' 天'});
+  if(g.lv===i&&i<3)g.lv=i+1;
+  save();closeM('mStep');renderDetail();
+  if(i===3){toast('四级全部完成，建议复测');askRetest();}
+  else toast('已记录，进入第 '+(i+2)+' 级');
+}
+function backLevel(i){
+  var g=DB.boards.GEN;
+  if(i<=0){toast('已经是一级，可以延长一周再练');return;}
+  g.lv=i-1;
+  DB.records.push({at:ts(),b:'GEN',name:'退回 '+(i)+' 级',txt:'从"'+B.GEN.levels[i].n+'"退回上一级，再练一周'});
+  save();closeM('mStep');renderDetail();toast('已退回上一级');
+}
+
+/* ===== 步骤表单 ===== */
+function openStep(j){
+  var st=B[cur].steps[j],h='';
+  h+='<div class="sh"><h3>第 '+(j+1)+' 步 · '+st.t+'</h3><span class="material-icons" onclick="closeM(\'mStep\')">close</span></div>';
+  h+='<div class="mut">'+st.d+'</div>';
+  if(cur==='PAN'&&j===2){h+=breathHTML();$('stepSheet').innerHTML=h+'<div style="height:12px"></div><button class="btn" onclick="doneStep()">这一步做完了</button><div style="height:6px"></div><button class="btn l" onclick="closeM(\'mStep\')">稍后再做</button>';openM('mStep');return;}
+  st.f.forEach(function(fd,idx){
+    h+='<label class="fl">'+fd.l+'</label>';
+    if(fd.ty==='area')h+='<textarea id="f'+idx+'" rows="3" placeholder="'+(fd.ph||'')+'"></textarea>';
+    else if(fd.ty==='input')h+='<input type="text" id="f'+idx+'" placeholder="'+(fd.ph||'')+'">';
+    else if(fd.ty==='scale'||fd.ty==='scale0')h+=scaleHTML(idx,fd);
+    else if(fd.ty==='multi'){h+='<div class="multi" id="f'+idx+'">';fd.opts.forEach(function(o){h+='<span onclick="'+(fd.one?'pickOne('+idx+',this)':'tog(this)')+'">'+o+'</span>';});h+='</div>';}
+  });
+  h+='<div style="height:14px"></div><button class="btn" onclick="doneStep()">记录并完成这一步</button>';
+  $('stepSheet').innerHTML=h;openM('mStep');
+}
+function scaleHTML(idx,fd){
+  var max=fd.max||10,out='<div class="grid6" id="f'+idx+'">';
+  for(var v=0;v<=max;v++){
+    if(max===100&&v%10!==0&&v!==max)continue;
+    out+='<span onclick="pickCell('+idx+','+v+','+(fd.ty==='scale0')+')">'+v+'</span>';
+  }
+  out+='</div>';return out;
+}
+function pickCell(idx,v){
+  var g=$('f'+idx);if(!g)return;var ch=g.getElementsByTagName('span');
+  for(var i=0;i<ch.length;i++){
+    if(Number(ch[i].innerHTML)===v)ch[i].classList.add('on');else ch[i].classList.remove('on');
+  }
+}
+function pickOne(idx,el){
+  var g=$('f'+idx);if(!g)return;var ch=g.getElementsByTagName('span');
+  for(var i=0;i<ch.length;i++)ch[i].classList.remove('on');
+  el.classList.add('on');
+}
+function redoStep(j){
+  var b=DB.boards[cur];
+  if(b.i===j+1)b.i=j;
+  b.d['s'+j]={};save();renderDetail();toast('已回到第 '+(j+1)+' 步');
+}
+function doneStep(){
+  var j=DB.boards[cur].i,st=B[cur].steps[j],data={};
+  for(var idx=0;idx<st.f.length;idx++){
+    var fd=st.f[idx],node=$( 'f'+idx);if(!node)continue;
+    if(fd.ty==='area'||fd.ty==='input'){data[fd.k]=node.value.trim();
+      if(!data[fd.k]){toast('请写一下：'+fd.l.replace(/（.*?）/,''));return;}}
+    else if(fd.ty==='scale'||fd.ty==='scale0'){
+      var ch=node.getElementsByTagName('span'),on=null;
+      for(var m=0;m<ch.length;m++)if(ch[m].classList.contains('on')){on=ch[m];break;}
+      if(!on){toast('请给一个分数：'+fd.l);return;}
+      data[fd.k]=Number(on.innerHTML);}
+    else if(fd.ty==='multi'){
+      var sel=node.getElementsByTagName('span'),arr=[];
+      for(var k=0;k<sel.length;k++)if(sel[k].classList.contains('on'))arr.push(sel[k].innerHTML);
+      if(!arr.length){toast('请至少选一项：'+fd.l.replace(/（.*?）/,''));return;}
+      data[fd.k]=fd.one?arr[arr.length-1]:arr;}
+  }
+  var b=DB.boards[cur];b.d['s'+j]=data;b.i=j+1;
+  var txt=[];
+  st.f.forEach(function(fd){var v=data[fd.k];if(v==null||v==='')return;txt.push(fd.l.replace(/（.*?）/,'')+'：'+(Array.isArray(v)?v.join('、'):v));});
+  DB.records.push({at:ts(),b:cur,name:'第'+(j+1)+'步 '+st.t,txt:txt.join('　')});
+  if(j>=st.length-1)DB.boards[cur].finished=true;
+  save();closeM('mStep');renderDetail();
+  if(cur==='PAN'&&j===3){
+    var d=b.d['s3']||{};
+    if(typeof d.b1==='number'&&typeof d.b2==='number')toast('难受程度 '+d.b1+' → '+d.b2+(d.b2<d.b1?('，降了 '+(d.b1-d.b2)+' 分'):''));
+  }
+  if(b.i>=B[cur].steps.length){toast('本板块步骤已完成');askRetest();}
+  else toast('已记录，进入下一步');
+}
+
+/* ===== 呼吸 ===== */
+function breathHTML(){
+  return '<div class="tiny" style="margin-top:12px">以你觉得舒服的节奏：吸气约 4 秒 → 呼气约 6 秒，不用屏息、不必吸得很深。3 轮即可。</div>'+
+   '<div class="brth" id="bc"><b id="bp">准备</b><i id="bn">0 / 3 轮</i></div>'+
+   '<button class="btn g" id="bb" onclick="togBr()">开始</button>'+
+   '<div class="warn"><span class="material-icons">warning_amber</span><span>如果发晕、心慌加重或更难受，立刻停止，恢复自然呼吸。这不是练得越狠越好。</span></div>';
+}
+var bt=null,bs=0,bl=0,bcyc=0;
+var BR=[['吸气',4],['呼气',6]];
+var BSC=['scale(1.28)','scale(0.8)'];
+function bEl(){return {c:$('bc'),p:$('bp'),n:$('bn'),b:$('bb')};}
+function togBr(){
+  if(bt){stopBr('paused');return;}
+  if(bl<=0){bs=0;bl=BR[0][1];bcyc=0;}
+  var e=bEl();if(e.c){e.c.style.transitionDuration=BR[bs][1]+'s';e.c.style.transform=BSC[bs];}
+  bt=setInterval(brTick,1000);
+}
+function brTick(){
+  var e=bEl();if(!e.c||!e.p||!e.n){stopBr('silent');return;}
+  if(bl<=0){
+    bs++;
+    if(bs>=BR.length){bs=0;bcyc++;
+      if(bcyc>=3){stopBr('done');toast('完成 3 轮，可以记录体验了');return;}}
+    bl=BR[bs][1];
+    e.c.style.transitionDuration=BR[bs][1]+'s';e.c.style.transform=BSC[bs];
+  }
+  e.p.innerHTML=BR[bs][0];e.n.innerHTML='剩 '+bl+' 秒 · 已 '+bcyc+' / 3 轮';
+  if(e.b)e.b.innerHTML='暂停';
+  bl--;
+}
+function stopBr(mode){
+  if(bt){clearInterval(bt);bt=null;}
+  var e=bEl();if(!e.c||!e.p)return;
+  if(mode==='done'){e.p.innerHTML='完成';e.n.innerHTML='3 轮已练完';if(e.b)e.b.innerHTML='再来一轮';}
+  else if(mode==='paused'){e.p.innerHTML='已暂停';e.n.innerHTML='点继续';if(e.b)e.b.innerHTML='继续';}
+  e.c.style.transform='scale(1)';
+}
+
+/* ===== 复测提示 ===== */
+function askRetest(){
+  var last=curMain();
+  var h='<div class="sh"><h3>做一次复测吗</h3><span class="material-icons" onclick="closeM(\'mInfo\')">close</span></div>';
+  if(last){
+    h+='<div class="mut">这一步已完成。建议现在或 1 周后再测一次 SCARED，对照 '+last.mainName+' 这条分量表看水平变化。</div>';
+    h+='<div class="card" style="margin-top:12px"><div class="row bet"><span class="mut">上次总分</span><b>'+last.total+' / 82</b></div>'+
+       SUBS.map(function(s){return '<div class="row bet"><span class="mut">'+s.n+'</span><span>'+s.k+' '+last.subs[s.k]+'/'+s.max+'</span></div>';}).join('')+'</div>';
+  }else h+='<div class="mut">板块步骤已完成，做一次复测可以看到水平变化。</div>';
+  h+='<button class="btn" onclick="closeM(\'mInfo\');startQuiz(\'re\')">现在就测</button>'+
+     '<div style="height:8px"></div><button class="btn l" onclick="closeM(\'mInfo\')">稍后再测</button>'+
+     '<div class="tiny" style="margin-top:10px">两次间隔建议至少 1 周，频繁重测分数波动主要来自当天状态。'+DISC+'。</div>';
+  $('infoSheet').innerHTML=h;openM('mInfo');
+}
+
+/* ===== 屏 4：我的记录 ===== */
+function renderMine(){
+  var el=$('mineBody'),h='';
+  h+='<div class="hero"><h2>我的记录</h2><p>练习记录与测评变化都存在这台设备上，不对外展示</p></div><div style="height:14px"></div>';
+  h+='<div class="card"><b style="font-size:15px">水平变化</b>';
+  if(DB.tests.length<2){
+    h+='<div class="tiny" style="margin-top:6px">至少两次测评才能看变化。'+(DB.tests.length?'现在 1 次，完成板块步骤后可复测。':'还没有测评记录。')+'</div>';
+  }else{
+    var a=DB.tests[0],z=DB.tests[DB.tests.length-1];
+    h+='<table class="cmp"><tr><th>维度</th><th>首测</th><th>最近</th><th>变化</th></tr>';
+    h+='<tr><td style="text-align:left">总分</td><td>'+a.total+'</td><td>'+z.total+'</td><td class="'+(z.total<a.total?'dn':'up')+'">'+(z.total<a.total?'↓':(z.total>a.total?'↑':'—'))+Math.abs(z.total-a.total)+'</td></tr>';
+    SUBS.forEach(function(s){
+      var d=z.subs[s.k]-a.subs[s.k];
+      h+='<tr><td style="text-align:left">'+s.n+'</td><td>'+a.subs[s.k]+'/'+s.max+'</td><td>'+z.subs[s.k]+'/'+s.max+'</td>'+
+         '<td class="'+(d<0?'dn':(d>0?'up':''))+'">'+(d===0?'—':(d<0?'↓'+(-d):'↑'+d))+'</td></tr>';
+    });
+    h+='</table><div class="tiny" style="margin-top:6px">变化解读需结合练习完成情况；分数下降不等于问题消失，仍建议让专业人员看整体情况。</div>';
+  }
+  h+='</div>';
+  var g=DB.boards.GEN;
+  h+='<div class="card"><b style="font-size:15px">忧管解难进度</b><div class="mut" style="margin-top:6px">当前第 '+(g.lv+1)+' 级 · '+(B.GEN.levels[g.lv]||B.GEN.levels[3]).n+'</div>';
+  for(var i=0;i<4;i++){
+    var d=(g.days['L'+i]||[]).filter(function(x){return x;}).length;
+    h+='<div class="sb2"><span class="lb">第'+['一','二','三','四'][i]+'级</span><span class="bar"><i style="width:'+(d/7*100)+'%;background:#5C8AE0"></i></span><span class="vv">'+d+'/7 天</span></div>';
+  }
+  h+='<div class="tiny">每级满 5 天进入下一级；做不到可退回，退回也会留记录。</div></div>';
+  h+='<div class="card"><b style="font-size:15px">练习时间轴（'+DB.records.length+'）</b>';
+  if(!DB.records.length)h+='<div class="tiny" style="margin-top:6px">完成任一板块步骤后会出现在这里</div>';
+  else{
+    h+='<div class="tl" style="margin-top:10px">';
+    DB.records.slice().reverse().slice(0,20).forEach(function(r){
+      var c=TONE[B[r.b].tone];
+      h+='<div class="ev"><b style="color:'+c.t+'">'+B[r.b].n+' · '+esc(r.name)+'</b><p>'+esc(r.txt||'')+'</p><span>'+dt(r.at)+' · '+rel(r.at)+'</span></div>';
+    });
+    h+='</div>';
+  }
+  h+='</div>';
+  h+='<div class="card"><b style="font-size:14px">板块得分对比（最近一次）</b>';
+  var last=curMain();
+  if(last){SUBS.forEach(function(s){var pc=Math.round(last.rate[s.k]*100);
+    h+='<div class="sb2"><span class="lb">'+s.n+'</span><span class="bar"><i style="width:'+Math.max(4,pc)+'%;background:'+TONE[B[s.k].tone].m+'"></i></span><span class="vv">'+last.subs[s.k]+'/'+s.max+'</span></div>';});}
+  else h+='<div class="tiny" style="margin-top:6px">还没有测评</div>';
+  h+='</div>';
+  h+='<div class="card" style="padding:0;overflow:hidden">';
+  h+=mrow('school','量表与界值说明','SCARED 41 项 · 0–2 计分 · 总分 0–82','infoScale()');
+  h+=mrow('supervisor_account','隐私与监护人','8–18 岁适用 · 未满 14 岁需监护人知情同意','infoPrivacy()');
+  h+=mrow('local_hospital','需要帮助时','12356 · 12355 · 遇危险 110','showSOS()');
+  h+='</div>';
+  h+='<button class="btn" onclick="startQuiz(\'re\')">再做一次自评（看变化）</button>';
+  h+='<div style="height:8px"></div><button class="btn l" onclick="if(confirm(\'清空全部记录与测评？\')){localStorage.removeItem(K);DB=blank();save();go(\'sc-test\')}">清空全部数据</button>';
+  h+='<div style="height:14px"></div>';
+  el.innerHTML=h;
+}
+function mrow(ic,t,d,fn){
+  return '<div class="li" style="display:flex;gap:11px;align-items:center;padding:13px 15px;border-bottom:1px solid var(--line);cursor:pointer" onclick="'+(fn||'void 0')+'">'+
+    '<span class="material-icons" style="color:var(--dark)">'+ic+'</span>'+
+    '<span style="flex:1"><b style="font-size:13.5px">'+t+'</b><span class="tiny" style="display:block">'+d+'</span></span>'+
+    '<span class="material-icons" style="color:var(--t3)">chevron_right</span></div>';
+}
+function infoScale(){
+  var h='<div class="sh"><h3>量表与界值说明</h3><span class="material-icons" onclick="closeM(\'mInfo\')">close</span></div>';
+  h+='<div class="mut">SCARED（儿童焦虑性情绪障碍筛查表）由 Birmaher 1997 编制、1999 修订为 41 条；国内由中南大学湘雅二院苏林雁、王凯等修订并建立中国城市常模（2002／2008）。适用于 8–18 岁自评，按最近 3 个月感受 0–2 三级计分，总分 0–82。</div>';
+  h+='<div class="card" style="margin-top:10px"><b style="font-size:13.5px">五个分量表</b>';
+  SUBS.forEach(function(s){h+='<div class="row bet"><span class="mut">'+s.n+'</span><span class="tiny">'+s.it.length+' 项 · 满分 '+s.max+'</span></div>';});
+  h+='</div>';
+  h+='<div class="know"><b>界值口径</b><br>· 国际常用：总分 ≥25 提示可能存在焦虑障碍，>30 特异性更高（敏感度约 79%、特异度约 82%）。<br>· 中国城市常模：以总分第 80 百分位 <b>≥23 分</b>为划界分，灵敏度 74%、特异度 79%。<br>· 分量表界值各来源不一致，因此本程序板块推荐按<b>得分率</b>排序，不套用未统一的临界分。</div>';
+  h+='<div class="warn"><span class="material-icons">warning_amber</span><span>本表为筛查工具。'+DISC+'；分数高低都不能单独作为诊断依据，需由精神科／心理科专业人员结合面谈与功能损害综合判断。</span></div>';
+  h+='<div class="tiny" style="line-height:1.7">参考文献：Birmaher 等，J Am Acad Child Adolesc Psychiatry 1997;36(4):545-53 与 1999;38(10):1230-6；王凯、苏林雁等，中国临床心理学杂志 2002;10(4):270-2；Su L 等，J Anxiety Disord 2008;22(4):612-21。</div>';
+  h+='<div style="height:12px"></div><button class="btn l" onclick="closeM(\'mInfo\')">关闭</button>';
+  $('infoSheet').innerHTML=h;openM('mInfo');
+};
+function infoPrivacy(){
+  var h='<div class="sh"><h3>隐私与监护人</h3><span class="material-icons" onclick="closeM(\'mInfo\')">close</span></div>';
+  h+='<div class="mut" style="line-height:1.85">1. 本程序适用于 8–18 岁自评。未满 14 周岁处理个人信息需取得父母或其他监护人的同意，请在监护人知情后使用。<br>'+
+     '2. 只收集自评答案与练习填写内容，用途仅为生成个人结果与练习记录；不采集手机号、身份证、位置、通讯录。<br>'+
+     '3. 全部数据保存在本机；正式版本中若同步后端，身份标识只在服务端用于判断归属，不在任何公开界面出现。<br>'+
+     '4. 分忧计划、溯因支持两个板块的练习本身要求与可信成人（家长、班主任、学校心理老师）共同商定和调整，建议把这些结果给大人看并一起决定下一步。<br>'+
+     '5. 你可以随时清空全部数据。<br>'+
+     '6. 若因使用本程序产生新的担忧或情绪加重，请停止练习并联系专业机构。</div>';
+  h+='<div style="height:12px"></div><button class="btn l" onclick="closeM(\'mInfo\')">关闭</button>';
+  $('infoSheet').innerHTML=h;openM('mInfo');
+};
+function showSOS(kind){
+  var h='<div class="sh"><h3>需要帮助时</h3><span class="material-icons" onclick="closeM(\'mInfo\')">close</span></div>';
+  if(kind==='bully'){
+    h+='<div class="risk"><span class="material-icons">gavel</span> 如果涉及<b>校园霸凌、被威胁、被孤立欺负、老师不当对待</b>：这不属于你一个人能解决的问题，需要由大人和专业机构来处理。告诉家长或信任的老师；同时可拨打 <b>12355</b> 青少年服务台；人身安全受到威胁时立即拨打 <b>110</b>。</div>';
+  }
+  h+='<div class="card"><b style="font-size:14px">求助渠道</b>'+
+    '<div class="mut" style="margin-top:8px">· <b>12356</b> 全国心理援助热线：24 小时、免费、匿名<br>'+
+    '· <b>12355</b> 青少年服务台：学习与人际困扰、权益咨询<br>'+
+    '· <b>12338</b> 妇女儿童维权与服务线<br>'+
+    '· 紧急情况或正在伤害自己：<b>120</b>，或就近医院急诊<br>'+
+    '· 校内：班主任、学校心理老师；校外：精神心理科门诊</div></div>';
+  h+='<div class="warn"><span class="material-icons">volunteer_activism</span><span>告诉大人不是"告状"或"添麻烦"，是把该由成人承担的责任交回去。练习可以继续，但它不能替代专业评估。</span></div>';
+  h+='<div style="height:10px"></div><button class="btn l" onclick="closeM(\'mInfo\')">关闭</button>';
+  $('infoSheet').innerHTML=h;openM('mInfo');
+}
+/* ===== 示例数据 ===== */
+function demo(){
+  DB=blank();DB.consent=true;
+  var a=new Array(41).fill(0);
+  [5,7,14,21,23,28,33,35,37].forEach(function(n){a[n-1]=2;});
+  [3,10,26,32,39].forEach(function(n){a[n-1]=2;});
+  [1,6,12,18,22].forEach(function(n){a[n-1]=1;});
+  [4,8,25].forEach(function(n){a[n-1]=1;});
+  [2,11,17].forEach(function(n){a[n-1]=1;});
+  var r=score(a);
+  DB.tests.push({at:ts()-864e5*21,total:r.total,subs:r.subs,rate:r.rate,main:r.main,mainName:r.mainName,
+    order:r.order.map(function(s){return s.k;})});
+  DB.main=r.main;
+  var g=DB.boards.GEN;g.days.L0=[1,1,1,1,1,0,0].map(Boolean);g.days.L1=[1,1,1,0,0,0,0].map(Boolean);g.lv=1;
+  DB.records.push({at:ts()-864e5*8,b:'GEN',name:'一级 · 把担忧推到固定时间段',txt:'时段：晚饭后 19:00 · 15 分钟　本周坚持 5 天'});
+  DB.records.push({at:ts()-864e5*2,b:'GEN',name:'二级 · 担忧出现时立马打断',txt:'打断动作：用凉水洗手、说出眼前 5 样东西'});
+  var sb=DB.boards.SOC;sb.d.s0={scene:'课间和同桌聊两句',why:'TA 平时会回应我'};sb.i=1;
+  DB.records.push({at:ts()-864e5*3,b:'SOC',name:'第1步 选择安全社交情境',txt:'场景：课间和同桌聊两句　·　安全理由：TA 平时会回应我'});
+  var b2=new Array(41).fill(0);
+  [5,7,14,21].forEach(function(n){b2[n-1]=1;});[23,28,33].forEach(function(n){b2[n-1]=1;});
+  [3,10,26].forEach(function(n){b2[n-1]=1;});[1,12,18].forEach(function(n){b2[n-1]=1;});
+  var r2=score(b2);
+  DB.tests.push({at:ts()-864e5*2,total:r2.total,subs:r2.subs,rate:r2.rate,main:r2.main,mainName:r2.mainName,
+    order:r2.order.map(function(s){return s.k;})});
+  save();go('sc-board');toast('已载入示例数据');
+}
+
+load();go('sc-test');
+</script>
+</body>
+</html>
